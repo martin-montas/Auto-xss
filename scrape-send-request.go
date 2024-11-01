@@ -10,13 +10,7 @@ import (
 )
 
 func scrapeAndSendRequest(pageURL string, wg *sync.WaitGroup, localAddr string) {
-	/*
-	 * 	This function get the vulnerable website and parses the
-	 * 	html to find form tags. It also uses go routines to make
-	 * 	it faster.
-	 */
-
-    dialer := &net.Dialer{
+	dialer := &net.Dialer{
         LocalAddr: &net.TCPAddr{
             IP: net.ParseIP(localAddr),
         },
@@ -48,7 +42,6 @@ func scrapeAndSendRequest(pageURL string, wg *sync.WaitGroup, localAddr string) 
 		wg.Done()
 		return
 	}
-
 	// Construct the full action URL
 	actionURL, err := url.Parse(pageURL)
 	fmt.Println(Blue + "[*] " + Reset + "Constructing the action URL")
